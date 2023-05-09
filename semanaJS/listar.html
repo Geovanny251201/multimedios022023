@@ -38,7 +38,52 @@
       </nav>
     </header>
     <main>
-      <!-- Modal -->
+          <!-- Modal Agregar -->
+          <div class="modal fade" id="modalAgregar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">
+                    Datos cursos
+                  </h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="form-agregar">
+                  <div class="modal-body">
+                    <div class="row">
+                      <div class="col-md-6 mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" value="" />
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="descripcion" class="form-label">Descripcion</label>
+                        <input type="text" class="form-control" id="descripcion" name="descripcion" value="" />
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="tiempo" class="form-label">Tiempo</label>
+                        <input type="text" class="form-control" id="tiempo" name="tiempo" value="" />
+                      </div>
+    
+                      <div class="col-md-6 mb-3">
+                        <label for="usuario" class="form-label">Usuario</label>
+                        <input type="text" class="form-control" id="usuario" name="usuario" value="" />
+                      </div>
+    
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                      Cerrar
+                    </button>
+                    <button id="btnGuardar" type="submit" class="btn btn-primary" onclick={agregarDatos()}>
+                      Guardar cambios
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+      
       <!-- Modal -->
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -53,17 +98,18 @@
               <div class="modal-body">
                 <div class="row">
                   <div class="col-md-6 mb-3">
-                    <label for="nombre" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre" value="" />
+                    <label for="inputNombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="inputNombre" name="inputNombre" value="" />
                   </div>
                   <div class="col-md-6 mb-3">
-                    <label for="descripcion" class="form-label">Descripcion</label>
-                    <input type="text" class="form-control" id="descripcion" name="descripcion" value="" />
+                    <label for="inputDescripcion" class="form-label">Descripcion</label>
+                    <input type="text" class="form-control" id="inputDescripcion" name="inputDescripcion" value="" />
                   </div>
                   <div class="col-md-6 mb-3">
-                    <label for="tiempo" class="form-label">Tiempo</label>
-                    <input type="text" class="form-control" id="tiempo" name="tiempo" value="" />
+                    <label for="inputTiempo" class="form-label">Tiempo</label>
+                    <input type="text" class="form-control" id="inputTiempo" name="inputTiempo" value="" />
                   </div>
+             
 
 
                 </div>
@@ -72,7 +118,7 @@
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                   Cerrar
                 </button>
-                <button id="btnGuardar" type="submit" class="btn btn-primary">
+                <button id="btnActualizar" type="submit" class="btn btn-primary">
                   Guardar cambios
                 </button>
               </div>
@@ -80,6 +126,9 @@
           </div>
         </div>
       </div>
+      <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregar" >
+        Agregar
+      </button>
 
       <div class="mb-3 tamanio">
         <label for="ordenarSelect" class="form-label text-white">Ordenar por ID:</label>
@@ -164,7 +213,7 @@ function setTable(datos) {
         <td>${valor.descripcion}</td>
         <td>${valor.tiempo}</td>
         <td>
-          <button class="btn btn-danger">Borrar</button>
+          <button class="btn btn-danger" onClick={borrarDatos('${valor.id}')}>Borrar</button>
           <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary" onClick="editarDatos('${valor.id}','${valor.nombre}','${valor.descripcion}','${valor.tiempo}','${valor.usuario}')">Editar</button>
         </td>
       </tr>
@@ -176,15 +225,18 @@ function setTable(datos) {
 }
   // -----------------------------------------------------------------------------------
   function editarDatos(id, nombre, descripcion, tiempo, usuario) {
-    var campoNombre = document.querySelector("#nombre");
-    var campoDescripcion = document.querySelector("#descripcion");
-    var campoTiempo = document.querySelector("#tiempo");
+    var campoNombre = document.querySelector("#inputNombre");
+    var campoDescripcion = document.querySelector("#inputDescripcion");
+    var campoTiempo = document.querySelector("#inputTiempo");
+ 
+
 
     campoNombre.value = nombre;
     campoDescripcion.value = descripcion;
     campoTiempo.value = tiempo;
 
-    var btnGuardar = document.querySelector("#btnGuardar");
+
+    var btnGuardar = document.querySelector("#btnActualizar");
     btnGuardar.addEventListener("click", function (e) {
       e.preventDefault();
 
@@ -193,7 +245,8 @@ function setTable(datos) {
         nombre: campoNombre.value,
         descripcion: campoDescripcion.value,
         tiempo: campoTiempo.value,
-        usuario: usuario
+        usuario:usuario
+        
       };
 
       fetch("https://paginas-web-cr.com/ApiPHP/apis/ActualizarCursos.php", {
@@ -211,6 +264,55 @@ function setTable(datos) {
         });
     });
   }
+
+  // -----------------------------------------------------------------------------------
+  function borrarDatos(id){
+    var datosId = {
+        id: id,
+      };
+      fetch("https://paginas-web-cr.com/ApiPHP/apis/BorrarCursos.php", {
+          method: "POST",
+          body: JSON.stringify(datosId)
+        })
+        .then(function (respuesta) {
+          return respuesta.json();
+        })
+        .then(function (datosrespuesta) {
+          cargarDatos();
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+
+  }
+
+   // -----------------------------------------------------------------------------------
+
+   function agregarDatos(){
+    var formulario = document.getElementById("form-agregar");
+
+    formulario.addEventListener("submit", function (e) {
+      e.preventDefault();
+    alert("Please enter");
+    var datosFormulario;
+    datosFormulario = new FormData(formulario);
+   
+   fetch("https://paginas-web-cr.com/ApiPHP/apis/InsertarCursos.php", {
+          method: "POST",
+          body:  JSON.stringify(Object.fromEntries(datosFormulario.entries())),
+        })
+          .then((respuesta) => respuesta.json()) //recibe los datos em formato json
+          .then((datosrespuesta) => {
+            cargarDatos();
+          })
+          .catch(console.log);
+  
+    })
+
+
+
+
+   }
   cargarDatos();
 </script>
 </body>
