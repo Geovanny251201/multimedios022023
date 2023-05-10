@@ -24,6 +24,8 @@
     <!-- SweetAlert CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.min.css">
 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
     <script>
       fetch("menu.html")
         .then((response) => response.text())
@@ -172,9 +174,9 @@
                     ${valor.nombre}
             </div>
   <div class="col-4 d-flex align-items-center justify-content-end  ">
-    <button class="btn btn-primary btn-md mr-2 me-2 ms-2 mt-1">Editar</button>
-    <button class="btn btn-danger  btn-md me-2 ms-2 mt-1">Eliminar</button>
-    <button class="btn btn-info  btn-md me-2 ms-2 mt-1">Consultar</button>
+    <button class="btn btn-primary btn-md mr-2 me-2 ms-2 mt-1"><i class="fas fa-edit me-1"></i>Editar</button>
+    <button class="btn btn-danger  btn-md me-2 ms-2 mt-1"><i class="fas fa-trash me-1"></i>Eliminar</button>
+    <button class="btn btn-info  btn-md me-2 ms-2 mt-1" ><i class="fas fa-info-circle me-1"></i>Consultar</button>
   </div>
 </div>
           
