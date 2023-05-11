@@ -44,7 +44,8 @@ function setTable(datos) {
     });
 }
 // -----------------------------------------------------------------------------------
-var campoNombre = document.querySelector("#inputNombre");
+var campoNombre = document.querySelector("#nombre");
+var campoDescripcion = document.querySelector("#inputDescripcion");
 var campoDescripcion = document.querySelector("#inputDescripcion");
 var campoTiempo = document.querySelector("#inputTiempo");
 
