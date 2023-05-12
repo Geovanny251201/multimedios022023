@@ -65,22 +65,25 @@ var campoUsuario = document.querySelector("#usuario");
 // {"id":"314","cedula":"3465435","correoelectronico":"ge@gmail.com","telefono":"12321","telefonocelular":"2354234",
 // "fechanacimiento":"2023-05-05","sexo":"masculino","direccion":"San Ramon",
 // "nombre":"W2","apellidopaterno":"Ara","apellidomaterno":"Ji","nacionalidad":"Tico","idCarreras":"1","usuario":"jaja"}
-function editarDatos(id, cedula, correoelectronico, telefono, telefonocelular,
+function llenarForm(id, cedula, correoelectronico, telefono, telefonocelular,
   fechanacimiento, sexo, direccion, nombre, apellidopaterno, apellidomaterno, nacionalidad, idCarreras, usuario) {
 
-  campoCedula = cedula
-  campoCorreoElectronico = correoelectronico
-  campoTelefono = telefono
-  campoTelefonoCelular = telefonocelular
-  campoFechaNacimiento = fechanacimiento
-  campoSexo = sexo
-  campoDireccion = direccion
+  campoCedula = cedula,
+  campoCorreoElectronico = correoelectronico,
+  campoTelefono = telefono,
+  campoTelefonoCelular = telefonocelular,
+  campoFechaNacimiento = fechanacimiento,
+  campoSexo = sexo,
+  campoDireccion = direccion,
   campoNombre = nombre
-  campoApellidopaterno = apellidopaterno
-  campoApellidomaterno = apellidomaterno
-  campoNacionalidad = nacionalidad
-  campoIdCarreras = idCarreras
+  campoApellidopaterno = apellidopaterno,
+  campoApellidomaterno = apellidomaterno,
+  campoNacionalidad = nacionalidad,
+  campoIdCarreras = idCarreras,
   campoUsuario = usuario
+  }
+  function editarDatos(id, cedula, correoelectronico, telefono, telefonocelular,
+    fechanacimiento, sexo, direccion, nombre, apellidopaterno, apellidomaterno, nacionalidad, idCarreras, usuario){
 
   var formulario = document.getElementById("form-estudiantes-editar");
 
