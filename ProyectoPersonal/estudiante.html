@@ -125,7 +125,7 @@
           </div>
         </div>
       </div>
-      <!-- Modal -->
+      <!-- Modal Editar -->
       <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
@@ -211,6 +211,89 @@
         </div>
       </div>
 
+
+        <!-- Modal Editar -->
+        <div class="modal fade" id="modalConsulta" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                  Datos personales
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form id="form-estudiantes-consultar">
+                <div class="modal-body">
+                  <div class="row">
+                    <div class="col-md-6 mb-3">
+                      <label for="cedula" class="form-label">Cédula</label>
+                     
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="nombre" class="form-label">Nombre</label>
+                      
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="apellidopaterno" class="form-label">Apellido paterno</label>
+                   
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="apellidomaterno" class="form-label">Apellido materno</label>
+                    
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="correoelectronico" class="form-label">Correo electrónico</label>
+                     
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="telefono" class="form-label">Teléfono</label>
+                     
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="telefonocelular" class="form-label">Teléfono celular</label>
+                     
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="fechanacimiento" class="form-label">Fecha de nacimiento</label>
+                     
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="sexo" class="form-label">Género</label>
+                     
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="direccion" class="form-label">Dirección</label>
+                  
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="nacionalidad" class="form-label">Nacionalidad</label>
+                    
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="idCarreras" class="form-label">ID Carreras</label>
+                  
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="usuario" class="form-label">Usuario</label>
+                    
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    Cerrar
+                  </button>
+                  <button type="submit" class="btn btn-primary">
+                    Guardar cambios
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+
+
       <div class="row">
         <div class="col-12">
           <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success">
@@ -264,7 +347,9 @@
               data-bs-toggle="modal"
               data-bs-target="#modalEdit"  onclick="llenarForm('${valor.id}', '${valor.cedula}','${valor.correoelectronico}','${valor.telefono}','${valor.telefonocelular}','${valor.fechanacimiento}','${valor.sexo}','${valor.direccion}','${valor.nombre}','${valor.apellidopaterno}','${valor.apellidomaterno}','${valor.nacionalidad}','${valor.idCarreras}','${valor.usuario}')"><i class="fas fa-edit me-1"></i>Editar</button>
             <button class="btn btn-danger  btn-md me-2 ms-2 mt-1" onClick={borrarDatos('${valor.id}','${valor.nombre}')}><i class="fas fa-trash me-1"></i>Eliminar</button>
-            <button class="btn btn-info  btn-md me-2 ms-2 mt-1" ><i class="fas fa-info-circle me-1"></i>Consultar</button>
+            <button class="btn btn-info  btn-md me-2 ms-2 mt-1" ><i class="fas fa-info-circle me-1"  type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#modalConsulta"></i>Consultar</button>
   </div>
 </div>
           
