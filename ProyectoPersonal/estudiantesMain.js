@@ -2,7 +2,6 @@
 var idValue;
 function llenarForm( id, cedula, correoelectronico, telefono, telefonocelular,
   fechanacimiento, sexo, direccion, nombre, apellidopaterno, apellidomaterno, nacionalidad, idCarreras, usuario) {
-    idValue=id;
     document.getElementById('cedulaEdit').value=cedula
     document.getElementById('correoelectronicoEdit').value=correoelectronico
     document.getElementById('telefonoEdit').value=telefono
@@ -16,7 +15,6 @@ function llenarForm( id, cedula, correoelectronico, telefono, telefonocelular,
     document.getElementById('nacionalidadEdit').value=nacionalidad
     document.getElementById('idCarrerasEdit').value=idCarreras
     document.getElementById('usuarioEdit').value=usuario
-
   }
 
   var formulario = document.getElementById("form-estudiantes-editar");
@@ -118,7 +116,28 @@ function borrarDatos(id, nombre) {
     );
   })
 }
+ // ------------------------------------------------------------
 
+ function llenarConsulta(id, cedula, correoelectronico, telefono, telefonocelular,
+  fechanacimiento, sexo, direccion, nombre, apellidopaterno, apellidomaterno, nacionalidad, idCarreras, usuario){
+
+    console.log(nombre);
+    document.getElementById('id').textContent=id
+    document.getElementById('cedula_id').textContent=cedula
+    document.getElementById('correoelectronico_id').textContent=correoelectronico
+    document.getElementById('telefono_id').textContent=telefono
+    document.getElementById('telefonocelular_id').textContent=telefonocelular
+    document.getElementById('fechanacimiento_id').textContent=fechanacimiento
+    document.getElementById('sexo_id').textContent=sexo
+    document.getElementById('direccion_id').textContent=direccion
+    document.getElementById('nombre_id').textContent=nombre
+    document.getElementById('apellidopaterno_id').textContent=apellidopaterno
+    document.getElementById('apellidomaterno_id').textContent=apellidomaterno
+    document.getElementById('nacionalidad_id').textContent=nacionalidad
+    document.getElementById('idCarreras_id').textContent=idCarreras
+    document.getElementById('usuario_id').textContent=usuario
+
+ }
   // ------------------------------------------------------------
 function agregarDatos() {
   var formulario = document.getElementById("form-estudiantes");
