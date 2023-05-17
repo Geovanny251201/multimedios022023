@@ -290,11 +290,11 @@ function mostrarPagina(pagina) {
   for (const valor of datos) {
     // Agrega el código HTML para mostrar los datos en la tabla
     contenidoFilasGeneral.innerHTML += `
-        <div class="d-flex fondo-listaGeneral mt-3  ">
+        <div class="d-flex fondo-listaGeneral mt-2 my-2 ms-2 me-2">
         <div class="col-8 mt-2 mb-2 d-flex align-items-center  ">
                 ${valor.nombre}
         </div>
-       <div class="col-4 d-flex align-items-center justify-content-end  ">
+       <div class="col-4 d-flex align-items-center justify-content-end ">
         <button class="btn btn-primary btn-md mr-2 me-2 ms-2 mt-1"    type="button"
           data-bs-toggle="modal"
           data-bs-target="#modalEdit"  onclick="llenarForm('${valor.id}', '${valor.cedula}','${valor.correoelectronico}','${valor.telefono}','${valor.telefonocelular}','${valor.fechanacimiento}','${valor.sexo}','${valor.direccion}','${valor.nombre}','${valor.apellidopaterno}','${valor.apellidomaterno}','${valor.nacionalidad}','${valor.idCarreras}','${valor.usuario}')"><i class="fas fa-edit me-1"></i>Editar</button>
