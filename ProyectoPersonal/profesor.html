@@ -13,7 +13,7 @@
 
   <!-- Estilos personalizados -->
 
-  <link rel="stylesheet" href="stylesEstudiantes.css" />
+  <link rel="stylesheet" href="stylesProfesores.css" />
 
   <!-- SweetAlert CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.min.css" />
@@ -38,11 +38,11 @@
   <header>
     <nav id="navbar-reciclado"></nav>
   </header>
-
+ 
   <main>
     <div class="container">
-      <!-- Modal Agregar -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <!-- Modal Agregar Profesor -->
+      <div class="modal fade" id="exampleModalProfesor" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
@@ -51,7 +51,7 @@
               </h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form id="form-estudiantes">
+            <form id="form-profesor">
               <div class="modal-body">
                 <div class="row">
                   <div class="col-md-6 mb-3">
@@ -127,8 +127,8 @@
           </div>
         </div>
       </div>
-      <!-- Modal Editar -->
-      <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <!-- Modal Editar Profesor -->
+      <div class="modal fade" id="modalEditProfesor" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
@@ -137,7 +137,7 @@
               </h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form id="form-estudiantes-editar">
+            <form id="form-profesor-editar">
               <div class="modal-body">
                 <div class="row">
                   <div class="col-md-6 mb-3">
@@ -215,14 +215,14 @@
 
 
       <!-- Modal Consultar -->
-      <div class="modal fade" id="modalConsulta" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="modalConsultaProfesor" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Datos personales</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form id="form-estudiantes-consultar">
+            <form id="form-profesor-consultar">
               <div class="modal-body">
                 <div class="row">
                   <div class="col-md-6 mb-3">
@@ -294,7 +294,7 @@
 
       <div class="row ">
         <div class="col-12 d-flex  justify-content-center">
-          <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success" onclick="cargarDatosGrupos()"><i class="fas fa-plus"></i>
+          <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModalProfesor" class="btn btn-success" onclick="cargarDatosGrupos()"><i class="fas fa-plus"></i>
             Agregar
           </button>
           <input type="text" id="inputNombre" class="input" placeholder="Filtrar por nombre" oninput="filtrarPorNombre()" />
@@ -330,7 +330,7 @@
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
   </script>
 
-  <script src="estudiantesMain.js">
+  <script src="profesorMain.js">
   </script>
 
   <!-- SweetAlert JS -->

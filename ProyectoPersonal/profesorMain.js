@@ -18,7 +18,7 @@ function llenarForm(id, cedula, correoelectronico, telefono, telefonocelular,
   document.getElementById('usuarioEdit').value = usuario
 }
 // ------------------------------------------------------------
-var formulario = document.getElementById("form-estudiantes-editar");
+var formulario = document.getElementById("form-profesor-editar");
 formulario.addEventListener('submit', function (e) {
   e.preventDefault();
 
@@ -71,7 +71,7 @@ formulario.addEventListener('submit', function (e) {
 
   if (validarDatos(datosActualizados)) {
     // console.log(datosenviar);
-    fetch("https://paginas-web-cr.com/ApiPHP/apis/ActualizarEstudiantes.php", {
+    fetch("https://paginas-web-cr.com/ApiPHP/apis/ActualizarProfesores.php", {
         method: "POST",
         body: JSON.stringify(datosActualizados)
       }) //url de peticion de datos
@@ -83,7 +83,7 @@ formulario.addEventListener('submit', function (e) {
           text: 'Estudiante editado',
           confirmButtonColor: '#4fb37c',
         })
-        $('#modalEdit').modal('hide');
+        $('#modalEditProfesor').modal('hide');
         cargarDatos();
 
       })
@@ -118,7 +118,7 @@ function borrarDatos(id, nombre) {
         id: id,
       };
 
-      fetch("https://paginas-web-cr.com/ApiPHP/apis/BorrarEstudiantes.php", {
+      fetch("https://paginas-web-cr.com/ApiPHP/apis/BorrarProfesores.php", {
           method: "POST",
           body: JSON.stringify(datosId)
         })
@@ -164,7 +164,7 @@ function llenarConsulta(id, cedula, correoelectronico, telefono, telefonocelular
 // ------------------------------------------------------------
 
 function agregarDatos() {
-  var formulario = document.getElementById("form-estudiantes");
+  var formulario = document.getElementById("form-profesor");
 
   var datosFormulario;
   datosFormulario = new FormData(formulario);
@@ -177,14 +177,14 @@ function agregarDatos() {
     }
   }
   if (formularioLleno) {
-    fetch("https://paginas-web-cr.com/ApiPHP/apis/InsertarEstudiantes.php", {
+    fetch("https://paginas-web-cr.com/ApiPHP/apis/InsertarProfesores.php", {
         method: "POST",
         body: JSON.stringify(Object.fromEntries(datosFormulario.entries())),
       })
       .then((respuesta) => respuesta.json())
       .then((datosrespuesta) => {
 
-        $('#exampleModal').modal('hide');
+        $('#exampleModalProfesor').modal('hide');
         console.log("Hola")
         // Vaciar los inputs
         formulario.reset();
@@ -208,7 +208,7 @@ function agregarDatos() {
   }
 }
 
-var formulario = document.getElementById("form-estudiantes");
+var formulario = document.getElementById("form-profesor");
 formulario.addEventListener("submit", function (e) {
   e.preventDefault();
   agregarDatos();
@@ -222,7 +222,7 @@ let datosOriginales = []
 var contenidoFilasGeneral = document.querySelector("#listaGeneral");
 // --------------------------------------------------------------------------------------------
 function cargarDatos() {
-  fetch("https://paginas-web-cr.com/ApiPHP/apis/ListaEstudiantes.php")
+  fetch("https://paginas-web-cr.com/ApiPHP/apis/ListaProfesores.php")
     .then((respuesta) => respuesta.json())
     .then((datosrespuesta) => {
       datosOriginales = datosrespuesta.data;
@@ -319,11 +319,11 @@ function mostrarPagina(pagina) {
        <div class="col-4 d-flex align-items-center justify-content-end ">
         <button class="btn btn-primary btn-md mr-2 me-2 ms-2 mt-1"    type="button"
           data-bs-toggle="modal"
-          data-bs-target="#modalEdit"  onclick="llenarForm('${valor.id}', '${valor.cedula}','${valor.correoelectronico}','${valor.telefono}','${valor.telefonocelular}','${valor.fechanacimiento}','${valor.sexo}','${valor.direccion}','${valor.nombre}','${valor.apellidopaterno}','${valor.apellidomaterno}','${valor.nacionalidad}','${valor.idCarreras}','${valor.usuario}')"><i class="fas fa-edit me-1"></i>Editar</button>
+          data-bs-target="#modalEditProfesor"  onclick="llenarForm('${valor.id}', '${valor.cedula}','${valor.correoelectronico}','${valor.telefono}','${valor.telefonocelular}','${valor.fechanacimiento}','${valor.sexo}','${valor.direccion}','${valor.nombre}','${valor.apellidopaterno}','${valor.apellidomaterno}','${valor.nacionalidad}','${valor.idCarreras}','${valor.usuario}')"><i class="fas fa-edit me-1"></i>Editar</button>
         <button class="btn btn-danger  btn-md me-2 ms-2 mt-1" onClick={borrarDatos('${valor.id}','${valor.nombre}')}><i class="fas fa-trash me-1"></i>Eliminar</button>
         <button class="btn btn-info  btn-md me-2 ms-2 mt-1"  type="button"
           data-bs-toggle="modal"
-          data-bs-target="#modalConsulta" onclick="llenarConsulta('${valor.id}', '${valor.cedula}','${valor.correoelectronico}','${valor.telefono}','${valor.telefonocelular}','${valor.fechanacimiento}','${valor.sexo}','${valor.direccion}','${valor.nombre}','${valor.apellidopaterno}','${valor.apellidomaterno}','${valor.nacionalidad}','${valor.idCarreras}','${valor.usuario}')"><i class="fas fa-info-circle me-1"></i>Consultar</button>
+          data-bs-target="#modalConsultaProfesor" onclick="llenarConsulta('${valor.id}', '${valor.cedula}','${valor.correoelectronico}','${valor.telefono}','${valor.telefonocelular}','${valor.fechanacimiento}','${valor.sexo}','${valor.direccion}','${valor.nombre}','${valor.apellidopaterno}','${valor.apellidomaterno}','${valor.nacionalidad}','${valor.idCarreras}','${valor.usuario}')"><i class="fas fa-info-circle me-1"></i>Consultar</button>
 </div>
 </div>
       

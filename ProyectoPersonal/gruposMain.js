@@ -1,60 +1,29 @@
 var idValue;
 
-function llenarForm(id, cedula, correoelectronico, telefono, telefonocelular,
-  fechanacimiento, sexo, direccion, nombre, apellidopaterno, apellidomaterno, nacionalidad, idCarreras, usuario) {
+function llenarForm(id,nombre) {
   idValue = id;
-  document.getElementById('cedulaEdit').value = cedula
-  document.getElementById('correoelectronicoEdit').value = correoelectronico
-  document.getElementById('telefonoEdit').value = telefono
-  document.getElementById('telefonocelularEdit').value = telefonocelular
-  document.getElementById('fechanacimientoEdit').value = fechanacimiento
-  document.getElementById('sexoEdit').value = sexo
-  document.getElementById('direccionEdit').value = direccion
+  document.getElementById('idGrupo').value = id
   document.getElementById('nombreEdit').value = nombre
-  document.getElementById('apellidopaternoEdit').value = apellidopaterno
-  document.getElementById('apellidomaternoEdit').value = apellidomaterno
-  document.getElementById('nacionalidadEdit').value = nacionalidad
-  document.getElementById('idCarrerasEdit').value = idCarreras
-  document.getElementById('usuarioEdit').value = usuario
+
 }
 // ------------------------------------------------------------
-var formulario = document.getElementById("form-estudiantes-editar");
+var formulario = document.getElementById("form-grupo-editar");
 formulario.addEventListener('submit', function (e) {
   e.preventDefault();
 
   var id = idValue;
-  var cedula = document.getElementById('cedulaEdit').value;
-  var correoelectronico = document.getElementById('correoelectronicoEdit').value;
-  var telefono = document.getElementById('telefonoEdit').value;
-  var telefonocelular = document.getElementById('telefonocelularEdit').value;
-  var fechanacimiento = document.getElementById('fechanacimientoEdit').value;
-  var sexo = document.getElementById('sexoEdit').value;
-  var direccion = document.getElementById('direccionEdit').value;
+ 
   var nombre = document.getElementById('nombreEdit').value;
-  var apellidopaterno = document.getElementById('apellidopaternoEdit').value;
-  var apellidomaterno = document.getElementById('apellidomaternoEdit').value;
-  var nacionalidad = document.getElementById('nacionalidadEdit').value;
-  var idCarreras = document.getElementById('idCarrerasEdit').value;
-  var usuario = document.getElementById('usuarioEdit').value;
+ 
 
 
 
 
   var datosActualizados = {
     id: id,
-    cedula: cedula,
-    correoelectronico: correoelectronico,
-    telefono: telefono,
-    telefonocelular: telefonocelular,
-    fechanacimiento: fechanacimiento,
-    sexo: sexo,
-    direccion: direccion,
+  
     nombre: nombre,
-    apellidopaterno: apellidopaterno,
-    apellidomaterno: apellidomaterno,
-    nacionalidad: nacionalidad,
-    idCarreras: idCarreras,
-    usuario: usuario
+  
   }
 
   function validarDatos(datos) {
@@ -71,7 +40,7 @@ formulario.addEventListener('submit', function (e) {
 
   if (validarDatos(datosActualizados)) {
     // console.log(datosenviar);
-    fetch("https://paginas-web-cr.com/ApiPHP/apis/ActualizarEstudiantes.php", {
+    fetch("https://paginas-web-cr.com/ApiPHP/apis/ActualizarGrupo.php", {
         method: "POST",
         body: JSON.stringify(datosActualizados)
       }) //url de peticion de datos
@@ -83,7 +52,7 @@ formulario.addEventListener('submit', function (e) {
           text: 'Estudiante editado',
           confirmButtonColor: '#4fb37c',
         })
-        $('#modalEdit').modal('hide');
+        $('#modalEditGrupo').modal('hide');
         cargarDatos();
 
       })
@@ -118,7 +87,7 @@ function borrarDatos(id, nombre) {
         id: id,
       };
 
-      fetch("https://paginas-web-cr.com/ApiPHP/apis/BorrarEstudiantes.php", {
+      fetch("https://paginas-web-cr.com/ApiPHP/apis/BorrarGrupo.php", {
           method: "POST",
           body: JSON.stringify(datosId)
         })
@@ -141,30 +110,19 @@ function borrarDatos(id, nombre) {
 }
 // ------------------------------------------------------------
 
-function llenarConsulta(id, cedula, correoelectronico, telefono, telefonocelular,
-  fechanacimiento, sexo, direccion, nombre, apellidopaterno, apellidomaterno, nacionalidad, idCarreras, usuario) {
+function llenarConsulta(id, nombre) {
 
   console.log(nombre);
   document.getElementById('id').textContent = id
-  document.getElementById('cedula_id').textContent = cedula
-  document.getElementById('correoelectronico_id').textContent = correoelectronico
-  document.getElementById('telefono_id').textContent = telefono
-  document.getElementById('telefonocelular_id').textContent = telefonocelular
-  document.getElementById('fechanacimiento_id').textContent = fechanacimiento
-  document.getElementById('sexo_id').textContent = sexo
-  document.getElementById('direccion_id').textContent = direccion
+
   document.getElementById('nombre_id').textContent = nombre
-  document.getElementById('apellidopaterno_id').textContent = apellidopaterno
-  document.getElementById('apellidomaterno_id').textContent = apellidomaterno
-  document.getElementById('nacionalidad_id').textContent = nacionalidad
-  document.getElementById('idCarreras_id').textContent = idCarreras
-  document.getElementById('usuario_id').textContent = usuario
+
 
 }
 // ------------------------------------------------------------
 
 function agregarDatos() {
-  var formulario = document.getElementById("form-estudiantes");
+  var formulario = document.getElementById("form-grupo");
 
   var datosFormulario;
   datosFormulario = new FormData(formulario);
@@ -177,14 +135,14 @@ function agregarDatos() {
     }
   }
   if (formularioLleno) {
-    fetch("https://paginas-web-cr.com/ApiPHP/apis/InsertarEstudiantes.php", {
+    fetch("https://paginas-web-cr.com/ApiPHP/apis/InsertarGrupo.php", {
         method: "POST",
         body: JSON.stringify(Object.fromEntries(datosFormulario.entries())),
       })
       .then((respuesta) => respuesta.json())
       .then((datosrespuesta) => {
 
-        $('#exampleModal').modal('hide');
+        $('#exampleModalGrupo').modal('hide');
         console.log("Hola")
         // Vaciar los inputs
         formulario.reset();
@@ -208,7 +166,7 @@ function agregarDatos() {
   }
 }
 
-var formulario = document.getElementById("form-estudiantes");
+var formulario = document.getElementById("form-grupo");
 formulario.addEventListener("submit", function (e) {
   e.preventDefault();
   agregarDatos();
@@ -222,7 +180,7 @@ let datosOriginales = []
 var contenidoFilasGeneral = document.querySelector("#listaGeneral");
 // --------------------------------------------------------------------------------------------
 function cargarDatos() {
-  fetch("https://paginas-web-cr.com/ApiPHP/apis/ListaEstudiantes.php")
+  fetch("https://paginas-web-cr.com/ApiPHP/apis/ListaGrupo.php")
     .then((respuesta) => respuesta.json())
     .then((datosrespuesta) => {
       datosOriginales = datosrespuesta.data;
@@ -240,25 +198,7 @@ function cargarDatos() {
 
 
 
-function cargarDatosGrupos() {
-  fetch("https://paginas-web-cr.com/ApiPHP/apis/ListaGrupo.php")
-    .then((respuesta) => respuesta.json())
-    .then((datosrespuesta) => {
-      datosOriginales = datosrespuesta.data;
-      const select=document.getElementById('listaGrupo');
 
-      for(const datos of datosOriginales){
-        const option = document.createElement('option');
-        option.value = datos.id;
-        option.textContent = datos.nombre;
-        select.appendChild(option);
-      }
-
-
-   
-    })
-    .catch(console.log);
-}
 // ------------------------------------------------------------
 function filtrarPorNombre() {
   const inputNombre = document.getElementById("inputNombre");
@@ -319,11 +259,11 @@ function mostrarPagina(pagina) {
        <div class="col-4 d-flex align-items-center justify-content-end ">
         <button class="btn btn-primary btn-md mr-2 me-2 ms-2 mt-1"    type="button"
           data-bs-toggle="modal"
-          data-bs-target="#modalEdit"  onclick="llenarForm('${valor.id}', '${valor.cedula}','${valor.correoelectronico}','${valor.telefono}','${valor.telefonocelular}','${valor.fechanacimiento}','${valor.sexo}','${valor.direccion}','${valor.nombre}','${valor.apellidopaterno}','${valor.apellidomaterno}','${valor.nacionalidad}','${valor.idCarreras}','${valor.usuario}')"><i class="fas fa-edit me-1"></i>Editar</button>
+          data-bs-target="#modalEditGrupo"  onclick="llenarForm('${valor.id}', '${valor.nombre}')"><i class="fas fa-edit me-1"></i>Editar</button>
         <button class="btn btn-danger  btn-md me-2 ms-2 mt-1" onClick={borrarDatos('${valor.id}','${valor.nombre}')}><i class="fas fa-trash me-1"></i>Eliminar</button>
         <button class="btn btn-info  btn-md me-2 ms-2 mt-1"  type="button"
           data-bs-toggle="modal"
-          data-bs-target="#modalConsulta" onclick="llenarConsulta('${valor.id}', '${valor.cedula}','${valor.correoelectronico}','${valor.telefono}','${valor.telefonocelular}','${valor.fechanacimiento}','${valor.sexo}','${valor.direccion}','${valor.nombre}','${valor.apellidopaterno}','${valor.apellidomaterno}','${valor.nacionalidad}','${valor.idCarreras}','${valor.usuario}')"><i class="fas fa-info-circle me-1"></i>Consultar</button>
+          data-bs-target="#modalConsultaGrupo" onclick="llenarConsulta('${valor.id}', '${valor.nombre}')"><i class="fas fa-info-circle me-1"></i>Consultar</button>
 </div>
 </div>
       
