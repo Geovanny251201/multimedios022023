@@ -16,6 +16,7 @@ function llenarForm(id, cedula, correoelectronico, telefono, telefonocelular,
   document.getElementById('nacionalidadEdit').value = nacionalidad
   document.getElementById('idCarrerasEdit').value = idCarreras
   document.getElementById('usuarioEdit').value = usuario
+  cargarDatosGruposEdit(idCarreras);
 }
 // ------------------------------------------------------------
 var formulario = document.getElementById("form-profesor-editar");
@@ -246,7 +247,7 @@ function cargarDatosGrupos() {
     .then((datosrespuesta) => {
       datosOriginales = datosrespuesta.data;
       const select=document.getElementById('listaGrupo');
-
+      select.innerHTML = '';
       for(const datos of datosOriginales){
         const option = document.createElement('option');
         option.value = datos.id;
@@ -256,6 +257,32 @@ function cargarDatosGrupos() {
 
 
    
+    })
+    .catch(console.log);
+}
+
+function cargarDatosGruposEdit(idGrupoSeleccionado) {
+  fetch("https://paginas-web-cr.com/ApiPHP/apis/ListaGrupo.php")
+    .then((respuesta) => respuesta.json())
+    .then((datosrespuesta) => {
+      const datosOriginales = datosrespuesta.data;
+      const select = document.getElementById('idCarrerasEdit');
+
+      // Limpiar el contenido del select antes de agregar nuevas opciones
+      select.innerHTML = '';
+
+      for (const datos of datosOriginales) {
+        const option = document.createElement('option');
+        option.value = datos.id;
+        option.textContent = datos.nombre;
+
+        // Verificar si la opción es la seleccionada
+        if (datos.id === idGrupoSeleccionado) {
+          option.selected = true;
+        }
+
+        select.appendChild(option);
+      }
     })
     .catch(console.log);
 }

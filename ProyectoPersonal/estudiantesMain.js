@@ -16,6 +16,7 @@ function llenarForm(id, cedula, correoelectronico, telefono, telefonocelular,
   document.getElementById('nacionalidadEdit').value = nacionalidad
   document.getElementById('idCarrerasEdit').value = idCarreras
   document.getElementById('usuarioEdit').value = usuario
+  cargarDatosGruposEdit(idCarreras);
 }
 // ------------------------------------------------------------
 var formulario = document.getElementById("form-estudiantes-editar");
@@ -246,7 +247,7 @@ function cargarDatosGrupos() {
     .then((datosrespuesta) => {
       datosOriginales = datosrespuesta.data;
       const select=document.getElementById('listaGrupo');
-
+      select.innerHTML = '';
       for(const datos of datosOriginales){
         const option = document.createElement('option');
         option.value = datos.id;
@@ -259,6 +260,32 @@ function cargarDatosGrupos() {
     })
     .catch(console.log);
 }
+function cargarDatosGruposEdit(idGrupoSeleccionado) {
+  fetch("https://paginas-web-cr.com/ApiPHP/apis/ListaGrupo.php")
+    .then((respuesta) => respuesta.json())
+    .then((datosrespuesta) => {
+      const datosOriginales = datosrespuesta.data;
+      const select = document.getElementById('idCarrerasEdit');
+
+      // Limpiar el contenido del select antes de agregar nuevas opciones
+      select.innerHTML = '';
+
+      for (const datos of datosOriginales) {
+        const option = document.createElement('option');
+        option.value = datos.id;
+        option.textContent = datos.nombre;
+
+        // Verificar si la opción es la seleccionada
+        if (datos.id === idGrupoSeleccionado) {
+          option.selected = true;
+        }
+
+        select.appendChild(option);
+      }
+    })
+    .catch(console.log);
+}
+
 // ------------------------------------------------------------
 function filtrarPorNombre() {
   const inputNombre = document.getElementById("inputNombre");
@@ -319,7 +346,7 @@ function mostrarPagina(pagina) {
        <div class="col-4 d-flex align-items-center justify-content-end ">
         <button class="btn btn-primary btn-md mr-2 me-2 ms-2 mt-1"    type="button"
           data-bs-toggle="modal"
-          data-bs-target="#modalEdit"  onclick="llenarForm('${valor.id}', '${valor.cedula}','${valor.correoelectronico}','${valor.telefono}','${valor.telefonocelular}','${valor.fechanacimiento}','${valor.sexo}','${valor.direccion}','${valor.nombre}','${valor.apellidopaterno}','${valor.apellidomaterno}','${valor.nacionalidad}','${valor.idCarreras}','${valor.usuario}')"><i class="fas fa-edit me-1"></i>Editar</button>
+          data-bs-target="#modalEdit"    onclick="llenarForm('${valor.id}', '${valor.cedula}','${valor.correoelectronico}','${valor.telefono}','${valor.telefonocelular}','${valor.fechanacimiento}','${valor.sexo}','${valor.direccion}','${valor.nombre}','${valor.apellidopaterno}','${valor.apellidomaterno}','${valor.nacionalidad}','${valor.idCarreras}','${valor.usuario}')"><i class="fas fa-edit me-1"></i>Editar</button>
         <button class="btn btn-danger  btn-md me-2 ms-2 mt-1" onClick={borrarDatos('${valor.id}','${valor.nombre}')}><i class="fas fa-trash me-1"></i>Eliminar</button>
         <button class="btn btn-info  btn-md me-2 ms-2 mt-1"  type="button"
           data-bs-toggle="modal"

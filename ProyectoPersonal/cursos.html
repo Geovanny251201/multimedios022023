@@ -104,7 +104,7 @@
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="cedula" class="form-label">ID</label>
-                        <input type="text" class="form-control" id="idGrupoEditar" name="id" value="" />
+                        <input type="text" class="form-control" id="idCursoEditar" name="id" value="" />
                       </div>
                       <div class="col-md-6 mb-3">
                         <label for="nombre" class="form-label">Nombre</label>
@@ -138,47 +138,49 @@
       </div>
 
 
-      <!-- Modal Consultar Grupo -->
-      <div class="modal fade" id="modalConsultaCurso" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Consulta Grupo</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form id="form-curso-consultar">
-              <div class="modal-body">
-                <div class="row">
+        <!-- Modal Consultar Curso -->
+        <div class="modal fade" id="modalConsultaCurso" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Consulta Grupo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form id="form-grupo-consultar">
+                <div class="modal-body">
+                  <div class="row">
                     <div class="col-md-6 mb-3">
-                        <label for="cedula" class="form-label">ID</label>
-                        <input type="text" class="form-control" id="idGrupoConsultar" name="id" value="" />
-                      </div>
-                      <div class="col-md-6 mb-3">
-                        <label for="nombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="nombreConsultar" name="nombre" value="" />
-                      </div>
-                      <div class="col-md-6 mb-3">
-                        <label for="descripcion" class="form-label">Descripcion</label>
-                        <input type="text" class="form-control" id="descripcionConsultar" name="descripcion" value="" />
-                      </div>
-                      <div class="col-md-6 mb-3">
-                        <label for="tiempo" class="form-label">Tiempo</label>
-                        <input type="text" class="form-control" id="tiempoConsultar" name="tiempo" value="" />
-                      </div>
-                      <div class="col-md-6 mb-3">
-                        <label for="usuario" class="form-label">Usuario</label>
-                        <input type="text" class="form-control" id="usuarioConsultar" name="usuario" value="" />
-                      </div>
+                      <label for="id" class="header-label">Id:</label>
+                      <label for="id" class="result-label" id="idCursoConsultar"></label>
+                    </div>
+                
+                    <div class="col-md-6 mb-3">
+                      <label for="nombre" class="header-label">Nombre:</label>
+                      <label for="nombre_id" class="result-label" id="nombreConsultar"></label>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="descripcionConsultar" class="header-label">Descripción:</label>
+                      <label for="descripcionConsultar" class="result-label" id="descripcionConsultar"></label>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="tiempoConsultar" class="header-label">Tiempo:</label>
+                      <label for="tiempoConsultar" class="result-label" id="tiempoConsultar"></label>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="usuarioConsultar" class="header-label">Usuario:</label>
+                      <label for="usuarioConsultar" class="result-label" id="usuarioConsultar"></label>
+                    </div>
+                   
+                  </div>
                 </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-
-              </div>
-            </form>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+  
+                </div>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
 
       <div class="row ">
         <div class="col-12 d-flex  justify-content-center">
@@ -218,7 +220,7 @@
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
   </script>
 
-  <script src="gruposMain.js">
+  <script src="cursosMain.js">
   </script>
 
   <!-- SweetAlert JS -->
