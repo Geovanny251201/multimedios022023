@@ -259,7 +259,8 @@ function mostrarPagina(pagina) {
   for (const valor of datos) {
     // Agrega el código HTML para mostrar los datos en la tabla
     contenidoFilasGeneral.innerHTML += `
-        <div class="d-flex fondo-listaGeneral mt-2 my-2 ms-2 me-2">
+        <div class="d-flex fondo-listaGeneral mt-2 my-2 ms-2 me-2 row">
+        
         <div class="col-8 mt-2 mb-2 d-flex align-items-center  ">
                 ${valor.nombre}
         </div>
@@ -269,7 +270,7 @@ function mostrarPagina(pagina) {
           data-bs-target="#modalEditCurso"  onclick="llenarForm('${valor.id}', '${valor.nombre}','${valor.descripcion}','${valor.tiempo}','${valor.usuario}')"><i class="fas fa-edit me-1"></i>Editar</button>
 
         <button class="btn btn-danger  btn-md me-2 ms-2 mt-1" onClick={borrarDatos('${valor.id}','${valor.nombre}')}><i class="fas fa-trash me-1"></i>Eliminar</button>
-        <button class="btn btn-info  btn-md me-2 ms-2 mt-1"  type="button"
+        <button class="btn btn-info   btn-md me-2 ms-2 mt-1"  type="button"
           data-bs-toggle="modal"
           data-bs-target="#modalConsultaCurso" onclick="llenarConsulta('${valor.id}', '${valor.nombre}','${valor.descripcion}','${valor.tiempo}','${valor.usuario}')"><i class="fas fa-info-circle me-1"></i>Consultar</button>
 </div>
